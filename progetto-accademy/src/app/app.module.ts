@@ -3,10 +3,34 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NavComponent } from './nav/nav.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { DaystableComponent } from './daystable/daystable.component';
+import { DaysComponent } from './days/days.component';
+import { ChampionshipComponent } from './championship/championship.component';
+import { MatchComponent } from './match/match.component';
+import { DaydetailComponent } from './daydetail/daydetail.component';
+import { MatchtableComponent } from './matchtable/matchtable.component';
+import { TeamtableComponent } from './teamtable/teamtable.component';
+import { PlayerdetailsComponent } from './playerdetails/playerdetails.component';
+import { TeamdetailsComponent } from './teamdetails/teamdetails.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavComponent,
+    HeaderComponent,
+    FooterComponent,
+    DaystableComponent,
+    DaysComponent,
+    ChampionshipComponent,
+    MatchComponent,
+    DaydetailComponent,
+    MatchtableComponent,
+    TeamtableComponent,
+    PlayerdetailsComponent,
+    TeamdetailsComponent
   ],
   imports: [
     BrowserModule,
