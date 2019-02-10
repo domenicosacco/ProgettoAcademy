@@ -2,10 +2,11 @@
     <h3> Dettagli Team </h3>
 <div *ngIf="tm">
     {{tm.idTeam}}
+    {{tm.name}}
 </div>
 <ul>
     <li *ngFor="let player of players">
-        <span> {{player.name}} </span>
+        <a routerLink="/teamtable/playerdetail/{{player.id}}"> <span> {{player.name}} </span> </a>
     </li>
 </ul>
 </div>

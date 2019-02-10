@@ -7,14 +7,12 @@ import { Player } from './models/player';
 })
 export class PlayerService {
 
-  pl : Player = new Player("Pucariello","id: 1","AT","09/04/1995",10,"Campobasso");
-
- 
-
+  pl : Player;
   constructor() { }
 
   getPlayerDetails(idPlayer: string) : Player {
 
+    this.pl = new Player("Nome player con id" + idPlayer,idPlayer,"AT","09/04/1995",10,"Campobasso");
     console.log("chiamato servizio getPLayerDetails()");
     return this.pl;
 

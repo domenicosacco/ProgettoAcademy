@@ -12,7 +12,7 @@ export class TeamService {
   tm: Team=new Team("IT","via Partipilo","light blue","url scudetto","@gmail",1995,"id: 1",
                     "SSC Napoli","3339567765","Napoli",[],"NPL","San Paolo","www.scnapoli.carileo",[]);
 
-                    pls : Player[]=[new Player("Pucariello","1","AT","09/04/1995",10,"Campobasso"), new Player("Sacco","id: 2","ATT","30/12/1994",10,"Foggia")];
+                    pls : Player[]=[new Player("Pucariello","1","AT","09/04/1995",10,"Campobasso"), new Player("Sacco","2","ATT","30/12/1994",10,"Foggia")];
   constructor() { }
 
   getTeamDetails(idTeam: string) : Team { 

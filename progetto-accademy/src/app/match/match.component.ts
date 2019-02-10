@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {Match} from '../models/match';
 import {MatchService} from '../match.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-match',
@@ -10,16 +11,18 @@ import {MatchService} from '../match.service';
 
 export class MatchComponent implements OnInit {
 
-  matches: Match[];
 
-  constructor(private matchService: MatchService) { }
+  match: Match;
+
+  constructor(private route: ActivatedRoute,private matchService: MatchService) { }
 
   ngOnInit() {
     this.getMatches();
   }
 
   getMatches(): void {
-    this.matches = this.matchService.getMatchesOfDay("1");
+    const id = this.route.snapshot.paramMap.get('id');
+    this.match = this.matchService.getMatchDetails(id);
   }
 
 }

@@ -1,8 +1,5 @@
 <div>
   <h3> Partite </h3>
-<ul>
-  <li *ngFor="let match of matches">
-        <span> Match {{match.id}} Stato {{match.status}} </span>
-  </li>
-</ul>
+      <span> Match {{match.id}} Stato {{match.status}} - <a routerLink="/teamtable/teamdetail/{{match.homeTeamID}}"> {{match.homeTeamName}} </a>contro <a routerLink="/teamtable/teamdetail/{{match.awayTeamID}}"> {{match.awayTeamName}} </a> </span>
 </div>
+

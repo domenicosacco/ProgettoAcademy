@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { MatchtableComponent } from './matchtable/matchtable.component';
 import { TeamtableComponent } from './teamtable/teamtable.component';
 import { PlayerdetailsComponent } from './playerdetails/playerdetails.component';
 import { TeamdetailsComponent } from './teamdetails/teamdetails.component';
+import { MatchdetailComponent } from './matchdetail/matchdetail.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { TeamdetailsComponent } from './teamdetails/teamdetails.component';
     MatchtableComponent,
     TeamtableComponent,
     PlayerdetailsComponent,
-    TeamdetailsComponent
+    TeamdetailsComponent,
+    MatchdetailComponent
   ],
   imports: [
     BrowserModule,

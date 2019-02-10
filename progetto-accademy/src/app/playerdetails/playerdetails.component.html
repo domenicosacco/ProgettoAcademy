@@ -1,6 +1,6 @@
-<div>
+<div *ngIf="player">
     <h3> Dettagli giocatore </h3>
-    <div *ngIf="player">
-        {{player.name}}
+    <div >
+        {{player.name}} - {{player.position}}
     </div>
   </div>

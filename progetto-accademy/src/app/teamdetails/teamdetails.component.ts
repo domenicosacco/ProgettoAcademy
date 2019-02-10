@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Team} from '../models/team';
 import {TeamService} from '../team.service';
 import { Player } from '../models/player';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-teamdetails',
   templateUrl: './teamdetails.component.html',
@@ -12,7 +13,7 @@ export class TeamdetailsComponent implements OnInit {
   tm: Team;
   players: Player[];
 
-  constructor(private teamService: TeamService) { }
+  constructor(private route: ActivatedRoute,private teamService: TeamService) { }
 
   ngOnInit() {
     this.getTeamDetails("1");
@@ -20,12 +21,14 @@ export class TeamdetailsComponent implements OnInit {
   }
 
   getTeamDetails(idTeam: string) : void {
-    this.tm=this.teamService.getTeamDetails("1");
+    const id = this.route.snapshot.paramMap.get('id');
+    this.tm=this.teamService.getTeamDetails(id);
     
   }
 
   getPlayersOfTeam(idTeam: string) : void {
-    this.players=this.teamService.getPlayersofTeam("1");
+    const id = this.route.snapshot.paramMap.get('id');
+    this.players=this.teamService.getPlayersofTeam(id);
   }
 
 }

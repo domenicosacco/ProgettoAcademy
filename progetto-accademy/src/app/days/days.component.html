@@ -2,7 +2,15 @@
   <h3> Giornate </h3>
 <ul>
   <li *ngFor="let day of days">
+      <a routerLink="daydetail/{{day.dayOfMatch}}">
         <span> Giornata {{day.dayOfMatch}} - {{day.competitionName}}</span>
+      </a>
   </li>
 </ul>
+
+<app-daydetail>
+</app-daydetail>
+
 </div>
+
+
