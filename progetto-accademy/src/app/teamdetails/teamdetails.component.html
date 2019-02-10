@@ -1,3 +1,11 @@
-<p>
-  teamdetails works!
-</p>
+<div>
+    <h3> Dettagli Team </h3>
+<div *ngIf="tm">
+    {{tm.idTeam}}
+</div>
+<ul>
+    <li *ngFor="let player of players">
+        <span> {{player.name}} </span>
+    </li>
+</ul>
+</div>

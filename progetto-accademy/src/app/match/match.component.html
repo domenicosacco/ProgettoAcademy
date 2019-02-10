@@ -1,3 +1,8 @@
-<p>
-  match works!
-</p>
+<div>
+  <h3> Partite </h3>
+<ul>
+  <li *ngFor="let match of matches">
+        <span> Match {{match.id}} Stato {{match.status}} </span>
+  </li>
+</ul>
+</div>

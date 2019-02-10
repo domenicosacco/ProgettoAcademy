@@ -1,3 +1,8 @@
-<p>
-  days works!
-</p>
+<div>
+  <h3> Giornate </h3>
+<ul>
+  <li *ngFor="let day of days">
+        <span> Giornata {{day.dayOfMatch}} - {{day.competitionName}}</span>
+  </li>
+</ul>
+</div>

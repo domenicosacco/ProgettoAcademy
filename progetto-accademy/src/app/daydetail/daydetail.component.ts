@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import {DailyMatch} from '../models/dailyMatch';
+import {DayService} from '../day.service';
 
 @Component({
   selector: 'app-daydetail',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DaydetailComponent implements OnInit {
 
-  constructor() { }
+  @Input() 
+  day: DailyMatch;
+
+  constructor(private dayService: DayService) { }
 
   ngOnInit() {
+    this.getDayDetails();
+  }
+
+  getDayDetails(): void {
+    this.day=this.dayService.getDayDetails(1);
   }
 
 }
