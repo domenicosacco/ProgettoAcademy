@@ -29,7 +29,7 @@
 
 <h3> Dettagli giocatori </h3>
 <ul>
-    <li *ngFor="let player of players">
+    <li *ngFor="let player of tm.players">
         <a routerLink="/teamtable/playerdetail/{{player.id}}"> <span> {{player.name}} </span> </a>
     </li>
 </ul>

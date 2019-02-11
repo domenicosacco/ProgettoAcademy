@@ -7,7 +7,7 @@ export class Team{
     public clubColor: string;
     public crustUrl : string; 
     public mail : string ; 
-    public foundedYear : number ;
+    public foundedYear : string ;
     public idTeam: string; 
     public name:string; 
     public phone : string ; 

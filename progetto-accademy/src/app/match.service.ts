@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Match } from './models/match'
 import { ActivatedRoute } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,21 +14,23 @@ export class MatchService {
 
   match: Match;
 
-  constructor(private route: ActivatedRoute) { }
+  BASE_URL= "http://api.football-data.org/v2/matches/";
+  header = new HttpHeaders({'X-Auth-Token':'aa89ef54a73b4df6a2e389906426b90b'});
 
-  getMatchDetails(idMatch:string) : Match {
+  constructor(private route: ActivatedRoute,private http: HttpClient) { }
+
+  getMatchDetails(idMatch:string) : Observable<Match> {
     
     const id = this.route.snapshot.paramMap.get('id');
-    
-    return this.match;
+
+      const url = this.BASE_URL + idMatch;
+
+      return this.http.get(url, {headers : this.header}).pipe(map((response: any) => {
+        return response;
+      }));
+    }
 
   }
 
-  getMatchesOfDay(idDay: string) : Match[] {
-    
-    console.log("called service getMatchesOfDay");
-    
-    return this.mchs;
-    
-  }
-}
+  
+

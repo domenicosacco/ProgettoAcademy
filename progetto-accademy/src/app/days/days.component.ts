@@ -58,25 +58,6 @@ export class DaysComponent implements OnInit {
 
         }
 
-        /*for(let day of this.days) {
-          let aDay= new DailyMatch();
-
-          aDay.competitionName=day.competitionName;
-          aDay.dayOfMatch=day.dayOfMatch
-          aDay.matches=[];
-
-          for(let day2 of this.days) {
-            if(day.dayOfMatch===day2.dayOfMatch && !aDay.matches.includes(day2.matches[0])) {
-              aDay.matches.push(day2.matches[0]);
-            }
-          }
-
-          console.log('New day number: ' + aDay.dayOfMatch);
-          this.sortedDays.push(aDay);
-
-        }*/
-
-
         var mergedObj = this.days.reduce((acc, obj) => {
           if (acc[obj.dayOfMatch]) {
              acc[obj.dayOfMatch].matches = acc[obj.dayOfMatch].matches.isArray ? 
