@@ -1,9 +1,33 @@
 <div>
     <h3> Dettagli Team </h3>
 <div *ngIf="tm">
-    {{tm.idTeam}}
-    {{tm.name}}
+    Id Squadra: {{tm.idTeam}}
+    <br>
+    Nome squadra: {{tm.name}}
+    <br>
+    Indirizzo squadra: {{tm.address}}
+    <br>
+    Colori squadra: {{tm.clubColor}}
+    <br>
+    URL Stemma: {{tm.crestUrl}}
+    <br>
+    Mail ufficiale: {{tm.mail}}
+    <br>
+    Anno Fondazione: {{tm.foundedYear}}
+    <br>
+    Telefono: {{tm.tel}}
+    <br>
+    Sigla: {{tm.tla}}
+    <br>
+    Stadio: {{tm.venue}}
+    <br>
+    Sito web ufficiale: {{tm.website}}
+
+    <!-- Vittorie {{tm.victories}} Sconfitte {{tm.losses}} Pareggi {{tm.draws}} -->
+    
 </div>
+
+<h3> Dettagli giocatori </h3>
 <ul>
     <li *ngFor="let player of players">
         <a routerLink="/teamtable/playerdetail/{{player.id}}"> <span> {{player.name}} </span> </a>

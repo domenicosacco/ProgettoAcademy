@@ -12,7 +12,6 @@ export class PlayerService {
 
   getPlayerDetails(idPlayer: string) : Player {
 
-    this.pl = new Player("Nome player con id" + idPlayer,idPlayer,"AT","09/04/1995",10,"Campobasso");
     console.log("chiamato servizio getPLayerDetails()");
     return this.pl;
 

@@ -1,6 +1,17 @@
 <div *ngIf="player">
     <h3> Dettagli giocatore </h3>
     <div >
-        {{player.name}} - {{player.position}}
+        Id: {{player.id}}
+        <br>
+        Nome: {{player.name}} 
+        <br>
+        Posizione: {{player.position}}
+        <br>
+        Data di Nascita: {{player.dateOfBirth}}
+        <br>
+        Numero maglietta: {{player.shirtNumber}}
+        <br>
+        Paese di nascita: {{player.countryOfBirth}}
+        
     </div>
   </div>

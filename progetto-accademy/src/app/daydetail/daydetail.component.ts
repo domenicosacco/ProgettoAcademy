@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {DailyMatch} from '../models/dailyMatch';
 import {DayService} from '../day.service';
 import { ActivatedRoute } from '@angular/router';
+import { Match } from '../models/match';
 
 @Component({
   selector: 'app-daydetail',
@@ -21,7 +22,41 @@ export class DaydetailComponent implements OnInit {
 
   getDayDetails(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.day=this.dayService.getDayDetails(id);
-  }
 
-}
+    this.dayService.getDayDetails(id).subscribe(
+      data => {
+
+        this.day=new DailyMatch();
+        this.day.competitionName=data['competition'].name;
+        this.day.matches=[];
+
+          for(let match in data['matches']) {
+
+          let matchToPut = new Match();
+
+          matchToPut.id = data['matches'][match].id,
+          matchToPut.homeTeamName=data['matches'][match]['homeTeam'].name,
+          matchToPut.awayTeamName=data['matches'][match]['awayTeam'].name,
+          matchToPut.homeTeamID=data['matches'][match]['homeTeam'].id,
+          matchToPut.awayTeamID=data['matches'][match]['awayTeam'].id,
+          matchToPut.homeTeamScore=data['matches'][match]['score']['fullTime']['homeTeam'],
+          matchToPut.awayTeamScore=data['matches'][match]['score']['fullTime']['awayTeam'],
+          matchToPut.utcDate=data['matches'][match].utcDate,
+          matchToPut.status=data['matches'][match].status,
+          matchToPut.stage=data['matches'][match].stage,
+          matchToPut.lastUpdated=data['matches'][match].lastUpdated,
+          matchToPut.matchDay=data['matches'][match]['matchday'];
+
+          this.day.matches.push(matchToPut);
+          this.day.dayOfMatch=data['matches'][match]['matchday'];
+
+          console.log(this.day.dayOfMatch);
+
+        }
+
+  },
+  error=> console.log(error)
+    )}
+
+
+  }

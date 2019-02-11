@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import {DailyMatch} from './models/dailyMatch';
 import { Match } from './models/match';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,32 +13,24 @@ export class DayService {
 
   daysChampionship : DailyMatch[];
   day: DailyMatch;
+  BASE_URL : string = "http://api.football-data.org/v2/competitions/2019";
+  header = new HttpHeaders({'X-Auth-Token':'aa89ef54a73b4df6a2e389906426b90b'});
+
+  constructor(private http: HttpClient) { }
 
 
-  constructor() { }
-
-  getDaysofChampionship(championshipID: string) : DailyMatch[] {
-    console.log("called service getDaysofChampionship")
-    this.daysChampionship=[new DailyMatch(1,"Serie A",[new Match("Napoli","Juve","id: 1","id: 10"
-    ,"1","ultimo aggiornamento: 10/02/2019",1,3,1,"Tier 1","FINISH","giocata il: 29/10/2018"),
-     new Match("Inter","Milan","id: 2","id: 20"
-     ,"2","ultimo aggiornamento: 10/02/2019",1,3,2,"Tier 1","FINISH","giocata il: 300/10/2018")]),new DailyMatch(2,"Serie A",[new Match("Napoli","Juve","id: 1","id: 10"
-     ,"1","ultimo aggiornamento: 10/02/2019",1,3,1,"Tier 1","FINISH","giocata il: 29/10/2018"),
-      new Match("Inter","Milan","id: 2","id: 20"
-      ,"2","ultimo aggiornamento: 10/02/2019",1,3,2,"Tier 1","FINISH","giocata il: 300/10/2018")]),new DailyMatch(3,"Serie A",[new Match("Napoli","Juve","id: 1","id: 10"
-      ,"1","ultimo aggiornamento: 10/02/2019",1,3,1,"Tier 1","FINISH","giocata il: 29/10/2018"),
-       new Match("Inter","Milan","id: 2","id: 20"
-       ,"2","ultimo aggiornamento: 10/02/2019",1,3,2,"Tier 1","FINISH","giocata il: 300/10/2018")])];
-
-    return this.daysChampionship;
+    getDaysofChampionships() : Observable<DailyMatch[]>{
+      const url = this.BASE_URL + '/matches';
+      return this.http.get(url, {headers : this.header}).pipe(map((response: any[]) => {
+        return response;
+      }));
   }
 
-  getDayDetails(dayID: number) : DailyMatch {
+  getDayDetails(dayID: number) : Observable<DailyMatch> {
     console.log("called service getDayDetails");
-    this.day= new DailyMatch(dayID,"Serie A",[new Match("Napoli","Juve","id: 1","id: 10"
-    ,"1","ultimo aggiornamento: 10/02/2019",dayID,3,1,"Tier 1","FINISH","giocata il: 29/10/2018"),
-    new Match("Inter","Milan","id: 2","id: 20"
-    ,"2","ultimo aggiornamento: 10/02/2019",dayID,3,2,"Tier 1","FINISH","giocata il: 300/10/2018")]);
-    return this.day;
+    const url = this.BASE_URL + '/matches?matchday=' + dayID;
+    return this.http.get(url, {headers : this.header}).pipe(map((response: any) => {
+      return response;
+    }));
   }
 }

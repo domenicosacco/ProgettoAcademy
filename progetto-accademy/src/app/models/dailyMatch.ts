@@ -1,9 +1,14 @@
 import{Match} from './match'
 
-export class DailyMatch{
+export class DailyMatch {
+  
 
-    constructor(public dayOfMatch: number, public competitionName: string, public matches: Match[] ){
+    public dayOfMatch: number;
+    public competitionName: string;
+    public matches: Match[];
+    
+    constructor(){
 
     }
-
+      
 }

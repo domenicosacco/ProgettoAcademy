@@ -1,5 +1,17 @@
 <div>
   <h3> Partite </h3>
-      <span> Match {{match.id}} Stato {{match.status}} - <a routerLink="/teamtable/teamdetail/{{match.homeTeamID}}"> {{match.homeTeamName}} </a>contro <a routerLink="/teamtable/teamdetail/{{match.awayTeamID}}"> {{match.awayTeamName}} </a> </span>
+      Match {{match.id}} Stato {{match.status}} - <a routerLink="/teamtable/teamdetail/{{match.homeTeamID}}"> {{match.homeTeamName}} </a>contro <a routerLink="/teamtable/teamdetail/{{match.awayTeamID}}"> {{match.awayTeamName}} </a>
+      <br>
+      Risultato: {{match.homeTeamScore}} - {{match.awayTeamScore}}
+      <br>
+      Stage: {{match.stage}}
+      <br>
+      Data: {{match.utcDate}}
+      <br>
+      Ultimo aggiornamento: {{match.lastUpdated}}
+      <br>
+      ID Team casa: {{match.homeTeamID}}
+      <br>
+      ID Team trasferta: {{match.awayTeamID}}
 </div>
 
