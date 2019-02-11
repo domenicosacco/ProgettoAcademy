@@ -31,8 +31,8 @@ export class DayService {
 
   getDayDetails(dayID: number) : DailyMatch {
     console.log("called service getDayDetails");
-    this.day= new DailyMatch(dayID,"2",[new Match("Napoli","Juve","id: 1","id: 10"
-    ,"1","ultimo aggiornamento: 10/02/2019",dayID,3,1,"Tier 1","FINISH","giocata il: 29/10/2018"), 
+    this.day= new DailyMatch(dayID,"Serie A",[new Match("Napoli","Juve","id: 1","id: 10"
+    ,"1","ultimo aggiornamento: 10/02/2019",dayID,3,1,"Tier 1","FINISH","giocata il: 29/10/2018"),
     new Match("Inter","Milan","id: 2","id: 20"
     ,"2","ultimo aggiornamento: 10/02/2019",dayID,3,2,"Tier 1","FINISH","giocata il: 300/10/2018")]);
     return this.day;

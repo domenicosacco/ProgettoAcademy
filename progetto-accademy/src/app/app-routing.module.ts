@@ -9,7 +9,7 @@ import { PlayerdetailsComponent } from './playerdetails/playerdetails.component'
 import { MatchComponent } from './match/match.component';
 
 const routes: Routes = [
-{path: 'daystable/daydetail/:id', component: DaydetailComponent},
+{path: 'daydetail/:id', component: DaydetailComponent},
 {path: 'matchtable/matchdetail/:id', component: MatchComponent},
 {path: 'teamtable/teamdetail/:id', component: TeamdetailsComponent},
 {path: 'teamtable/playerdetail/:id', component: PlayerdetailsComponent},

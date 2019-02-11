@@ -2,7 +2,7 @@
 <div  *ngIf="day.dayOfMatch!=0">
     <h3> Dettagli giornata </h3>
 <div>
-    Numero giornata: {{day.dayOfMatch}}
+    Numero giornata: {{day.dayOfMatch}} di {{day.competitionName}}
     <ul>
             <li *ngFor="let match of day.matches"> <a routerLink="/matchtable/matchdetail/{{match.id}}"> {{match.id}} </a>- {{match.homeTeamName}} contro {{match.awayTeamName}}</li>
     </ul>
