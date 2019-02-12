@@ -5,6 +5,10 @@
       <a routerLink="/daystable/daydetail/{{day.dayOfMatch}}">
         <span> Giornata {{day.dayOfMatch}} - {{day.competitionName}}</span>
       </a>
+      <p *ngFor="let matchOfDay of day.matches">
+        <span> {{matchOfDay.homeTeamName}} contro {{matchOfDay.awayTeamName}} </span>
+      </p>
+
   </li>
 </ul>
 
