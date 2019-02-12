@@ -22,11 +22,19 @@ export class TeamService {
 
   getTeamDetails(idTeam: string) : Observable<Team> { 
 
-    const id = this.route.snapshot.paramMap.get('id');
-
     const url = this.BASE_URL + idTeam;
 
     return this.http.get(url, {headers : this.header}).pipe(map((response: any) => {
+      console.log(response);
+      return response;
+    }));
+  }
+
+  getTeamMatches(idTeam: string) : Observable<Match[]> { 
+
+    const url = this.BASE_URL + idTeam + "/matches";
+
+    return this.http.get(url, {headers : this.header}).pipe(map((response: any[]) => {
       console.log(response);
       return response;
     }));

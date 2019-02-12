@@ -4,7 +4,7 @@ export class Player {
     public id: string;
     public position: string; 
     public dateOfBirth: string; 
-    public shirtNumber: number;
+    public shirtNumber: string;
     public countryOfBirth: string
 
     constructor(){}

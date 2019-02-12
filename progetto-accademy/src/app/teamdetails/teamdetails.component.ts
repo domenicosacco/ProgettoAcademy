@@ -3,6 +3,8 @@ import {Team} from '../models/team';
 import {TeamService} from '../team.service';
 import { Player } from '../models/player';
 import { ActivatedRoute } from '@angular/router';
+import { Match } from '../models/match';
+
 @Component({
   selector: 'app-teamdetails',
   templateUrl: './teamdetails.component.html',
@@ -12,11 +14,20 @@ export class TeamdetailsComponent implements OnInit {
 
   tm: Team;
   players: Player[];
+  matches: Match[];
+  mtch: Match;
+  victoriesHome: number=0;
+  defeatsHome: number=0;
+  drawsHome: number=0;
+  victoriesAway: number=0;
+  defeatsAway: number=0;
+  drawsAway: number=0;
 
   constructor(private route: ActivatedRoute,private teamService: TeamService) { }
 
   ngOnInit() {
     this.getTeamDetails();
+    this.getTeamMatches();
   }
 
   getTeamDetails() : void {
@@ -30,7 +41,8 @@ export class TeamdetailsComponent implements OnInit {
         
         this.tm.address=data['address'];
         this.tm.clubColor=data['clubColors'];
-        this.tm.crustUrl=data['crestUrl'];
+        this.tm.crustUrl=String(data['crestUrl']);
+        console.log(String(data['crestUrl']));
         this.tm.area=data['area']['name'];
         this.tm.mail=data['email']
         this.tm.foundedYear=data['founded'];
@@ -58,6 +70,61 @@ export class TeamdetailsComponent implements OnInit {
   },
   error=> console.log(error)
     )}
+
+    getTeamMatches() : void {
+      const id = this.route.snapshot.paramMap.get('id');
+      
+      this.teamService.getTeamMatches(id).subscribe(
+        data => {
+  
+          this.matches= [];
+  
+          console.log("----------------" + data['matches'].match);
+
+          for(let match in data['matches']) {
+            this.mtch =new Match();
+            this.mtch.id = data['matches'][match]['id'];
+            console.log("----------------" + data['matches'][match]['id']);
+            this.mtch.homeTeamName=data['matches'][match]['homeTeam']['name'];
+            this.mtch.awayTeamName=data['matches'][match]['awayTeam']['name'];
+            this.mtch.homeTeamID=data['matches'][match]['homeTeam']['id'];
+            this.mtch.awayTeamID=data['matches'][match]['awayTeam']['id'];
+            this.mtch.homeTeamScore=data['matches'][match]['score']['fullTime']['homeTeam'];
+            this.mtch.awayTeamScore=data['matches'][match]['score']['fullTime']['awayTeam'];
+            this.mtch.utcDate=data['matches'][match]['utcDate'];
+            this.mtch.status=data['matches'][match]['status'];
+            this.mtch.stage=data['matches'][match]['stage'];
+            this.mtch.lastUpdated=data['matches'][match]['lastUpdated'];
+            this.mtch.matchDay=data['matches'][match]['matchday'];
+            this.matches.push(this.mtch);
+
+          }
+
+          this.mtch=new Match();
+
+          for(let mtch of this.matches) {
+            console.log(this.tm.name.toLowerCase().trim() + " " + mtch.homeTeamName.toLowerCase().trim());
+            if(mtch.stage == "REGULAR_SEASON" && mtch.homeTeamScore!= null && mtch.awayTeamScore!= null) {
+
+            if(this.tm.name.toLowerCase().trim() == mtch.homeTeamName.toLowerCase().trim()) {
+                if(mtch.homeTeamScore>mtch.awayTeamScore) {this.victoriesHome++;}
+                else if (mtch.homeTeamScore<mtch.awayTeamScore) {this.defeatsHome++;}
+                else if (mtch.homeTeamScore==mtch.awayTeamScore) {this.drawsHome++;}
+            }
+
+            else {
+              if(mtch.homeTeamScore<mtch.awayTeamScore) {this.victoriesAway++;}
+              else if (mtch.homeTeamScore>mtch.awayTeamScore) {this.defeatsAway++;}
+              else if (mtch.homeTeamScore==mtch.awayTeamScore) {this.drawsAway++;}
+            }
+          }
+        }
+
+          
+  
+    },
+    error=> console.log(error)
+      )}
     
   }
 
