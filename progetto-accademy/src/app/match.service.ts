@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { SafeDelay } from './models/SafeDelay';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,7 @@ export class MatchService {
     const id = this.route.snapshot.paramMap.get('id');
 
       const url = this.BASE_URL + idMatch;
+
 
       return this.http.get(url, {headers : this.header}).pipe(map((response: any) => {
         return response;

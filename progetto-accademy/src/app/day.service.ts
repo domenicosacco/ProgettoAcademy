@@ -4,6 +4,7 @@ import { Match } from './models/match';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { SafeDelay } from './models/SafeDelay';
 
 
 @Injectable({
@@ -21,6 +22,7 @@ export class DayService {
 
     getDaysofChampionships() : Observable<DailyMatch[]>{
       const url = this.BASE_URL + '/matches';
+
       return this.http.get(url, {headers : this.header}).pipe(map((response: any[]) => {
         return response;
       }));
@@ -29,6 +31,7 @@ export class DayService {
   getDayDetails(dayID: number) : Observable<DailyMatch> {
     console.log("called service getDayDetails");
     const url = this.BASE_URL + '/matches?matchday=' + dayID;
+
     return this.http.get(url, {headers : this.header}).pipe(map((response: any) => {
       return response;
     }));

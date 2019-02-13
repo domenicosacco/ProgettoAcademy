@@ -17,6 +17,7 @@ import { TeamtableComponent } from './teamtable/teamtable.component';
 import { PlayerdetailsComponent } from './playerdetails/playerdetails.component';
 import { TeamdetailsComponent } from './teamdetails/teamdetails.component';
 import { MatchdetailComponent } from './matchdetail/matchdetail.component';
+import { SeasoninfoComponent } from './seasoninfo/seasoninfo.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatchdetailComponent } from './matchdetail/matchdetail.component';
     TeamtableComponent,
     PlayerdetailsComponent,
     TeamdetailsComponent,
-    MatchdetailComponent
+    MatchdetailComponent,
+    SeasoninfoComponent
   ],
   imports: [
     BrowserModule,

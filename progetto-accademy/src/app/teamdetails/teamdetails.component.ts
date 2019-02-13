@@ -4,6 +4,7 @@ import {TeamService} from '../team.service';
 import { Player } from '../models/player';
 import { ActivatedRoute } from '@angular/router';
 import { Match } from '../models/match';
+import { SafeDelay } from '../models/SafeDelay';
 
 @Component({
   selector: 'app-teamdetails',
@@ -26,7 +27,9 @@ export class TeamdetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute,private teamService: TeamService) { }
 
   ngOnInit() {
+    SafeDelay.delay(500);
     this.getTeamDetails();
+    SafeDelay.delay(500);
     this.getTeamMatches();
   }
 

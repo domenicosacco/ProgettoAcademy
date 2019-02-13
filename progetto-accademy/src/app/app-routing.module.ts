@@ -15,7 +15,8 @@ const routes: Routes = [
 {path: 'teamtable/playerdetail/:id', component: PlayerdetailsComponent},
 {path: 'daystable', component: DaystableComponent},
 {path: 'matchtable', component: MatchtableComponent },
-{path: 'teamtable', component: TeamtableComponent}
+{path: 'teamtable', component: TeamtableComponent},
+{path: '' , redirectTo:'/daystable',pathMatch:'full'}
 ];
 
 @NgModule({

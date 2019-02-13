@@ -2,16 +2,27 @@
   <h3> Partite </h3>
       Match {{match.id}} Stato {{match.status}} - <a routerLink="/teamtable/teamdetail/{{match.homeTeamID}}"> {{match.homeTeamName}} </a> contro <a routerLink="/teamtable/teamdetail/{{match.awayTeamID}}"> {{match.awayTeamName}} </a>
       <br>
-      Risultato: {{match.homeTeamScore}} - {{match.awayTeamScore}}
-      <br>
       Stage: {{match.stage}}
       <br>
       Data: {{match.utcDate}}
       <br>
       Ultimo aggiornamento: {{match.lastUpdated}}
       <br>
+      Primo tempo: <br>
+      {{match.homeTeamScoreHalfTime}} - {{match.awayTeamScoreHalfTime}}
+      <br>
+      Secondo tempo: <br>
+      {{match.homeTeamScore}} - {{match.awayTeamScore}}
+      <br>
+      Rigori {{match.homeTeamName}} : {{match.homeTeamPenalties}} <br>
+      Rigori {{match.awayTeamName}} : {{match.awayTeamPenalties}} <br>
       ID Team casa: {{match.homeTeamID}}
       <br>
       ID Team trasferta: {{match.awayTeamID}}
+      <br>
+      Stadio : {{match.venue}}
+      <br>
+      Stage: {{match.stage}}
+      
 </div>
 

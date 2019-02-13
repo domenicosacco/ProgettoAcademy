@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Match } from './models/match';
 import { catchError, map, tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+import { SafeDelay } from './models/SafeDelay';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,15 @@ export class PlayerService {
       }));
     }
 
+  getPlayerPicture(name:string) : Observable<string> {
+
+    const url = "https://en.wikipedia.org/w/api.php?action=query&titles="+ name + "&prop=pageimages&format=json&origin=*&pithumbsize=300";
+
+      return this.http.get(url).pipe(map((response: any) => {
+        return response;
+      }));
+
+  }
  
 
 }

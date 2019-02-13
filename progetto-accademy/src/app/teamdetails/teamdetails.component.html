@@ -27,7 +27,11 @@
     <h3> Dettagli giocatori </h3>
 <ul>
     <li *ngFor="let player of tm.players">
-        <a routerLink="/teamtable/playerdetail/{{player.id}}"> <span> {{player.name}} </span> </a>
+        <span *ngIf="player.position == null"> Allenatore:  <a routerLink="/teamtable/playerdetail/{{player.id}}"> <span> {{player.name}} </span> </a> </span>
+        <span *ngIf="player.position == 'Goalkeeper'"> <a routerLink="/teamtable/playerdetail/{{player.id}}"> <span> {{player.name}} </span> </a> - Portiere </span>
+        <span *ngIf="player.position == 'Defender'"><a routerLink="/teamtable/playerdetail/{{player.id}}"> <span> {{player.name}} </span> </a> - Difensore </span>
+        <span *ngIf="player.position == 'Midfielder'">  <a routerLink="/teamtable/playerdetail/{{player.id}}"> <span> {{player.name}} </span> </a> - Centrocampista</span>
+        <span *ngIf="player.position == 'Attacker'">  <a routerLink="/teamtable/playerdetail/{{player.id}}"> <span> {{player.name}} </span> </a> - Attaccante</span>
     </li>
 </ul>
 

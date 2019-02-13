@@ -5,7 +5,8 @@ export class Player {
     public position: string; 
     public dateOfBirth: string; 
     public shirtNumber: string;
-    public countryOfBirth: string
+    public countryOfBirth: string;
+    public playerUrl: string;
 
     constructor(){}
 

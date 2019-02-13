@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { catchError, map, tap } from 'rxjs/operators';
+import { SafeDelay } from './models/SafeDelay';
 
 @Injectable({
   providedIn: 'root'

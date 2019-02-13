@@ -3,6 +3,7 @@ import { Player } from '../models/player';
 import { PlayerService } from '../player.service';
 import { ActivatedRoute } from '@angular/router';
 import { Match } from '../models/match';
+import { SafeDelay } from '../models/SafeDelay';
 
 @Component({
   selector: 'app-playerdetails',
@@ -17,6 +18,7 @@ export class PlayerdetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute,private playerService: PlayerService) { }
 
   ngOnInit() {
+    SafeDelay.delay(500);
     this.getPlayerDetails();
   }
 
@@ -33,6 +35,19 @@ export class PlayerdetailsComponent implements OnInit {
         this.player.position=data['position'];
         data['shirtNumber'] == null? this.player.shirtNumber="N/A" : this.player.shirtNumber=data['shirtNumber'];
         this.player.dateOfBirth=data['dateOfBirth'];
+        this.playerService.getPlayerPicture(this.player.name.replace(" ","%20")).subscribe( data => {
+          console.log(data);
+          console.log(data['query']['pages']);
+          let firstProp;
+          for(var key in data['query']['pages']) {
+          if(data['query']['pages'].hasOwnProperty(key)) {
+            firstProp = data['query']['pages'][key];
+            break;
+          }
+          }
+          console.log(firstProp['thumbnail']['source']);
+          this.player.playerUrl=firstProp['thumbnail']['source']});
+        console.log(this.player.playerUrl);
         console.log(data['shirtNumber']);
         console.log(data['dateOfBirth']);
 

@@ -4,6 +4,7 @@ import {DayService} from '../day.service';
 import { ActivatedRoute } from '@angular/router';
 import { Match } from '../models/match';
 import { max } from 'rxjs/operators';
+import { SafeDelay } from '../models/SafeDelay';
 
 @Component({
   selector: 'app-days',
@@ -20,6 +21,7 @@ export class DaysComponent implements OnInit {
   constructor(private route: ActivatedRoute,private dayService: DayService) { }
 
   ngOnInit() {
+    SafeDelay.delay(500);
     this.getdays();
   }
 
@@ -32,7 +34,7 @@ export class DaysComponent implements OnInit {
           
           let day=new DailyMatch();
           day.matches=[];
-          console.log(data['matches'][match].matchday);
+          //console.log(data['matches'][match].matchday);
 
           let matchToPut = new Match();
 
@@ -53,7 +55,7 @@ export class DaysComponent implements OnInit {
           day.competitionName=data['competition'].name;
           day.dayOfMatch=data['matches'][match].matchday;
 
-          console.log(day.dayOfMatch);
+          //console.log(day.dayOfMatch);
 
           this.days.push(day);
 
@@ -80,12 +82,6 @@ export class DaysComponent implements OnInit {
           }
          }
          this.sortedDays.push(dayToPut);
-      }
-
-      for (let d of this.sortedDays) {
-        for(let match of d.matches) {
-        console.log(match);
-        }
       }
 
 
