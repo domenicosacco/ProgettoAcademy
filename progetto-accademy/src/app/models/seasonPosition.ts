@@ -11,5 +11,5 @@ export class seasonPosition {
    public won: string;
    public teamName:string;
    public teamCrestUrl: string;
-
+   public teamID: string;
 }

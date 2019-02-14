@@ -16,7 +16,7 @@ export class MatchService {
   match: Match;
 
   BASE_URL= "http://api.football-data.org/v2/matches/";
-  header = new HttpHeaders({'X-Auth-Token':'aa89ef54a73b4df6a2e389906426b90b'});
+  header = new HttpHeaders({'X-Auth-Token':'551c8548b0fe456784ba41fe2ba552e3'});
 
   constructor(private route: ActivatedRoute,private http: HttpClient) { }
 

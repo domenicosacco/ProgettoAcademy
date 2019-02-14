@@ -14,7 +14,8 @@ import { SafeDelay } from './models/SafeDelay';
 export class PlayerService {
 
   BASE_URL= "http://api.football-data.org/v2/players/";
-  header = new HttpHeaders({'X-Auth-Token':'aa89ef54a73b4df6a2e389906426b90b'});
+  header = new HttpHeaders({'X-Auth-Token':'551c8548b0fe456784ba41fe2ba552e3'});
+  wikiheader = new HttpHeaders({"Content-Type": "application/json; charset=UTF-8"});
 
   pl : Player;
 
@@ -36,6 +37,16 @@ export class PlayerService {
     const url = "https://en.wikipedia.org/w/api.php?action=query&titles="+ name + "&prop=pageimages&format=json&origin=*&pithumbsize=300";
 
       return this.http.get(url).pipe(map((response: any) => {
+        return response;
+      }));
+
+  }
+
+  getPlayerDescription(name:string) : Observable<string> {
+
+    const url = "https://it.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&&exsectionformat=wiki&exintro&origin=*&redirects=1&titles="+name;
+
+      return this.http.get(url, {headers : this.wikiheader}).pipe(map((response: any) => {
         return response;
       }));
 

@@ -1,16 +1,17 @@
 <div>
   <h3> Giornate </h3>
-<ul>
-  <li *ngFor="let day of sortedDays">
-      <a routerLink="/daystable/daydetail/{{day.dayOfMatch}}">
-        <span> Giornata {{day.dayOfMatch}} - {{day.competitionName}}</span>
-      </a>
-      <p *ngFor="let matchOfDay of day.matches">
-        <span> {{matchOfDay.homeTeamName}} contro {{matchOfDay.awayTeamName}} </span>
-      </p>
-
-  </li>
-</ul>
+<table class="championshipMaster">
+  <tr *ngFor="let day of sortedDays">
+      <td><a routerLink="/daystable/daydetail/{{champ}}/{{day.dayOfMatch}}">
+        Giornata {{day.dayOfMatch}} - {{day.competitionName}}
+      </a> </td>
+      <table class="championship">
+      <tr *ngFor="let matchOfDay of day.matches">
+        <td> <a class="more" routerLink="/matchtable/matchdetail/{{matchOfDay.id}}"> Info </a> </td> <td> {{matchOfDay.utcDate}} </td> <td>{{matchOfDay.homeTeamName}} contro {{matchOfDay.awayTeamName}}</td> <td>{{matchOfDay.homeTeamScore}} - {{matchOfDay.awayTeamScore}}</td>
+      </tr>
+    </table>
+    </tr>
+</table>
 
 <app-daydetail>
 </app-daydetail>

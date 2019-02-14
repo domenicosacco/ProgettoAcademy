@@ -1,7 +1,7 @@
 <div *ngIf="player">
     <h3> Dettagli giocatore </h3>
     <div >
-        <img src={{player.playerUrl}} alt="Immagine non disponibile"> <br>
+        <p *ngIf="player.playerUrl"><img src={{player.playerUrl}} alt="Immagine non disponibile"> <br></p>
         Id: {{player.id}}
         <br>
         Nome: {{player.name}} 
@@ -13,6 +13,10 @@
         Numero maglietta: {{player.shirtNumber}}
         <br>
         Paese di nascita: {{player.countryOfBirth}} <br>
-        
+        <br>
+        <div *ngIf="player.playerDetails">
+        Dettagli
+        <span [innerHtml]="player.playerDetails"></span>
+        </div>
     </div>
   </div>

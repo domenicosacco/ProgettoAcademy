@@ -1,5 +1,5 @@
 export class SafeDelay {
-    public static async delay(ms: number) {
-        await new Promise(resolve => setTimeout(()=>resolve(), ms)).then(()=>console.log("fired"));
+    public static async delay() {
+        await new Promise(resolve => setTimeout(()=>resolve(), 2000)).then(()=>console.log("fired"));
     }
 }

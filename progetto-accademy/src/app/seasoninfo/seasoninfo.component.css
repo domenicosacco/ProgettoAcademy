@@ -1,0 +1,11 @@
+.seasoninfo tr{
+    border: 1px solid black;
+}
+
+.seasoninfo a{
+    text-decoration: none;
+    color:black;
+}
+
+.seasoninfo tr:nth-child(even) {background: #CCC}
+.seasoninfo tr:nth-child(odd) {background: #FFF}

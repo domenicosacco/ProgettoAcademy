@@ -18,7 +18,7 @@ export class PlayerdetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute,private playerService: PlayerService) { }
 
   ngOnInit() {
-    SafeDelay.delay(500);
+    SafeDelay.delay();
     this.getPlayerDetails();
   }
 
@@ -45,8 +45,27 @@ export class PlayerdetailsComponent implements OnInit {
             break;
           }
           }
+          console.log("++++"+firstProp);
           console.log(firstProp['thumbnail']['source']);
-          this.player.playerUrl=firstProp['thumbnail']['source']});
+          this.player.playerUrl=firstProp['thumbnail']['source'];
+          this.player.playerDetails=firstProp['extract'];
+        });
+
+        this.playerService.getPlayerDescription(this.player.name.replace(" ","%20")).subscribe( data => {
+          console.log("+++++++"+data);
+          console.log(data['query']['pages']);
+          let firstProp;
+          for(var key in data['query']['pages']) {
+          if(data['query']['pages'].hasOwnProperty(key)) {
+            firstProp = data['query']['pages'][key];
+            break;
+          }
+          }
+
+        this.player.playerDetails=firstProp['extract'];
+        console.log(firstProp['extract']);
+        });  
+
         console.log(this.player.playerUrl);
         console.log(data['shirtNumber']);
         console.log(data['dateOfBirth']);

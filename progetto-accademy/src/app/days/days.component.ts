@@ -15,21 +15,32 @@ export class DaysComponent implements OnInit {
 
   days: DailyMatch[]=[];
   sortedDays: DailyMatch[] =[];
-
+  champ: string;
   matches= [];
 
   constructor(private route: ActivatedRoute,private dayService: DayService) { }
 
   ngOnInit() {
-    SafeDelay.delay(500);
+    SafeDelay.delay();
     this.getdays();
   }
 
+  getParamValueQueryString() {
+    const url = window.location.href;
+    let paramValue=url.substring(url.indexOf("daystable/")+10);
+    
+    console.log(paramValue);
+    return paramValue;
+  }
+
   getdays(): void {
-    //const id = this.route.snapshot.paramMap.get('id');
-    this.dayService.getDaysofChampionships().subscribe(
+    
+    this.champ= this.getParamValueQueryString();
+    this.dayService.getDaysofChampionships(this.champ).subscribe(
       data => {
 
+          console.log(data);
+          
           for(let match in data['matches']) {
           
           let day=new DailyMatch();
@@ -51,6 +62,9 @@ export class DaysComponent implements OnInit {
           matchToPut.lastUpdated=data['matches'][match].lastUpdated,
           matchToPut.matchDay=data['matches'][match].matchday
 
+          let date=matchToPut.utcDate.substring(0,matchToPut.utcDate.indexOf("T"));
+          matchToPut.utcDate=date + " " + matchToPut.utcDate.substring(matchToPut.utcDate.indexOf("T")+1,matchToPut.utcDate.indexOf("Z")-3);
+          
           day.matches.push(matchToPut);
           day.competitionName=data['competition'].name;
           day.dayOfMatch=data['matches'][match].matchday;

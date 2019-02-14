@@ -14,23 +14,24 @@ export class DayService {
 
   daysChampionship : DailyMatch[];
   day: DailyMatch;
-  BASE_URL : string = "http://api.football-data.org/v2/competitions/2019";
-  header = new HttpHeaders({'X-Auth-Token':'aa89ef54a73b4df6a2e389906426b90b'});
+  BASE_URL : string = "http://api.football-data.org/v2/competitions/";
+  header = new HttpHeaders({'X-Auth-Token':'551c8548b0fe456784ba41fe2ba552e3'});
 
   constructor(private http: HttpClient) { }
 
 
-    getDaysofChampionships() : Observable<DailyMatch[]>{
-      const url = this.BASE_URL + '/matches';
+    getDaysofChampionships(seasonId="2019") : Observable<DailyMatch[]>{
+      const url = this.BASE_URL + seasonId + '/matches';
 
       return this.http.get(url, {headers : this.header}).pipe(map((response: any[]) => {
+        console.log("4444444" + response)
         return response;
       }));
   }
 
-  getDayDetails(dayID: number) : Observable<DailyMatch> {
+  getDayDetails(dayID: number,seasonId="2019") : Observable<DailyMatch> {
     console.log("called service getDayDetails");
-    const url = this.BASE_URL + '/matches?matchday=' + dayID;
+    const url = this.BASE_URL + seasonId +'/matches?matchday=' + dayID;
 
     return this.http.get(url, {headers : this.header}).pipe(map((response: any) => {
       return response;

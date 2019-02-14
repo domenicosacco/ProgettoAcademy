@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ɵConsole } from '@angular/core';
 import {DailyMatch} from '../models/dailyMatch';
 import {DayService} from '../day.service';
 import { ActivatedRoute } from '@angular/router';
@@ -22,8 +22,9 @@ export class DaydetailComponent implements OnInit {
 
   getDayDetails(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
+    const champ = this.route.snapshot.paramMap.get('champ');
 
-    this.dayService.getDayDetails(id).subscribe(
+    this.dayService.getDayDetails(id,champ).subscribe(
       data => {
 
         this.day=new DailyMatch();
@@ -41,7 +42,9 @@ export class DaydetailComponent implements OnInit {
           matchToPut.awayTeamID=data['matches'][match]['awayTeam'].id,
           matchToPut.homeTeamScore=data['matches'][match]['score']['fullTime']['homeTeam'],
           matchToPut.awayTeamScore=data['matches'][match]['score']['fullTime']['awayTeam'],
-          matchToPut.utcDate=data['matches'][match].utcDate,
+          matchToPut.utcDate=data['matches'][match].utcDate;
+          let date=matchToPut.utcDate.substring(0,matchToPut.utcDate.indexOf("T"));
+          matchToPut.utcDate=date + " " + matchToPut.utcDate.substring(matchToPut.utcDate.indexOf("T")+1,matchToPut.utcDate.indexOf("Z")-3);
           matchToPut.status=data['matches'][match].status,
           matchToPut.stage=data['matches'][match].stage,
           matchToPut.lastUpdated=data['matches'][match].lastUpdated,

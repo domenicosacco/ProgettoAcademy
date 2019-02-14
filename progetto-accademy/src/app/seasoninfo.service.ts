@@ -10,13 +10,12 @@ import { SeasonInfo } from './models/seasoninfo';
 })
 export class SeasoninfoService {
 
-  BASE_URL= "http://api.football-data.org/v2/competitions/2019/standings";
-  header = new HttpHeaders({'X-Auth-Token':'aa89ef54a73b4df6a2e389906426b90b'});
+  header = new HttpHeaders({'X-Auth-Token':'551c8548b0fe456784ba41fe2ba552e3'});
 
   constructor(private http: HttpClient) { }
 
-  getSeason() : Observable<SeasonInfo> {
-      let url = this.BASE_URL;
+  getSeason(seasonId="2019") : Observable<SeasonInfo> {
+      let url = "http://api.football-data.org/v2/competitions/"+seasonId+"/standings";
       return this.http.get(url, {headers : this.header}).pipe(map((response: any) => {
         return response;
       }));

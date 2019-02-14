@@ -18,7 +18,7 @@ export class MatchComponent implements OnInit {
   constructor(private route: ActivatedRoute,private matchService: MatchService) { }
 
   ngOnInit() {
-    SafeDelay.delay(500);
+    SafeDelay.delay();
     this.getMatchDetails();
   }
 

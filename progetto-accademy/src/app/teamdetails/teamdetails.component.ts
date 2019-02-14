@@ -27,9 +27,9 @@ export class TeamdetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute,private teamService: TeamService) { }
 
   ngOnInit() {
-    SafeDelay.delay(500);
+    SafeDelay.delay();
     this.getTeamDetails();
-    SafeDelay.delay(500);
+    SafeDelay.delay();
     this.getTeamMatches();
   }
 

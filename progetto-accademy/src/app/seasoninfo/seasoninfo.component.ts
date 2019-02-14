@@ -3,6 +3,8 @@ import { SeasoninfoService } from '../seasoninfo.service';
 import { SafeDelay } from '../models/SafeDelay';
 import { SeasonInfo } from '../models/seasoninfo';
 import { seasonPosition } from '../models/seasonPosition';
+import { ActivatedRoute } from '@angular/router';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-seasoninfo',
@@ -11,17 +13,32 @@ import { seasonPosition } from '../models/seasonPosition';
 })
 export class SeasoninfoComponent implements OnInit {
 
-  constructor(private seasonService: SeasoninfoService) { }
+  constructor(private route: ActivatedRoute,private seasonService: SeasoninfoService) { }
+
+  champ:string;
 
   season: SeasonInfo;
   ngOnInit() {
     //SafeDelay.delay(500);
-    this.getPlayerDetails();
+    
+    this.getSeasonDetails();
   }
 
-  getPlayerDetails() : void {
+  getParamValueQueryString() {
+    const url = window.location.href;
+    let paramValue=url.substring(url.indexOf("daystable/")+10);
+    
+    console.log(paramValue);
+    return paramValue;
+  }
+  
+  getSeasonDetails() : void {
+    
+    this.champ= this.getParamValueQueryString();
 
-    this.seasonService.getSeason().subscribe(
+    console.log("link to d: " + this.champ);
+
+    this.seasonService.getSeason(this.champ).subscribe(
       data => {
 
         this.season=new SeasonInfo();
@@ -54,6 +71,7 @@ export class SeasoninfoComponent implements OnInit {
           posInfo.teamCrestUrl=seasonTeam['team']['crestUrl'];
           posInfo.teamName=seasonTeam['team']['name'];
           posInfo.won=seasonTeam['won'];
+          posInfo.teamID=seasonTeam['team']['id'];
 
 
 
