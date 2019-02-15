@@ -27,35 +27,7 @@ export class DaydetailComponent implements OnInit {
     this.dayService.getDayDetails(id,champ).subscribe(
       data => {
 
-        this.day=new DailyMatch();
-        this.day.competitionName=data['competition'].name;
-        this.day.matches=[];
-
-          for(let match in data['matches']) {
-
-          let matchToPut = new Match();
-
-          matchToPut.id = data['matches'][match].id,
-          matchToPut.homeTeamName=data['matches'][match]['homeTeam'].name,
-          matchToPut.awayTeamName=data['matches'][match]['awayTeam'].name,
-          matchToPut.homeTeamID=data['matches'][match]['homeTeam'].id,
-          matchToPut.awayTeamID=data['matches'][match]['awayTeam'].id,
-          matchToPut.homeTeamScore=data['matches'][match]['score']['fullTime']['homeTeam'],
-          matchToPut.awayTeamScore=data['matches'][match]['score']['fullTime']['awayTeam'],
-          matchToPut.utcDate=data['matches'][match].utcDate;
-          let date=matchToPut.utcDate.substring(0,matchToPut.utcDate.indexOf("T"));
-          matchToPut.utcDate=date + " " + matchToPut.utcDate.substring(matchToPut.utcDate.indexOf("T")+1,matchToPut.utcDate.indexOf("Z")-3);
-          matchToPut.status=data['matches'][match].status,
-          matchToPut.stage=data['matches'][match].stage,
-          matchToPut.lastUpdated=data['matches'][match].lastUpdated,
-          matchToPut.matchDay=data['matches'][match]['matchday'];
-
-          this.day.matches.push(matchToPut);
-          this.day.dayOfMatch=data['matches'][match]['matchday'];
-
-          console.log(this.day.dayOfMatch);
-
-        }
+        this.day=DailyMatch.parseJsonDay(data);
 
   },
   error=> console.log(error)

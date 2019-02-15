@@ -3,7 +3,12 @@
     border: 1px solid black;
     background-color: green;
     color:white;
+    text-align: center;
     
+}
+
+.championshipMaster {
+    width: 100%;
 }
 
 .championshipMaster a{
@@ -21,4 +26,12 @@ color: white;
     margin-left: 10px;
     margin-right: 10px;
     font-weight: bolder;
+}
+
+h3 {
+    text-align: center;
+}
+
+table {
+    width:100%;
 }

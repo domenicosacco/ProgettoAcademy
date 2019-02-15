@@ -17,7 +17,7 @@ const routes: Routes = [
 {path: 'daystable/:champ', component: DaysComponent},
 {path: 'matchtable', component: MatchtableComponent },
 {path: 'teamtable', component: TeamtableComponent},
-{path: '' , redirectTo:'/daystable/',pathMatch:'prefix'}
+{path: '' , redirectTo:'/daystable/2019',pathMatch:'full'}
 ];
 
 @NgModule({

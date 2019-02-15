@@ -2,20 +2,30 @@
 <html>
 <body>
 
-    <h1>
-        Welcome to {{ title }}!
-    </h1>
-
+    <div class="row">
   <app-header></app-header>
-
+   </div>
+  
+   <div class="row">
   <app-nav></app-nav>
+  </div>
 
   
 <main>
   
+  <div class="container">
+  <div class="row">
+
+  <div class="col-md-8">
   <router-outlet></router-outlet>
-  
+  </div>
+
+  <div class="col-md-4">
   <app-seasoninfo></app-seasoninfo>
+  </div>
+
+  </div>
+</div>
   
   <!--<app-daystable>
   </app-daystable>
@@ -28,8 +38,18 @@
 
 </main>
 
+<footer>
+<div class="row">
+
+
 <app-footer>
 </app-footer>
+
+
+</div>
+
+</footer>
+
 </body>
 </html>
 

@@ -36,8 +36,6 @@ export class PlayerdetailsComponent implements OnInit {
         data['shirtNumber'] == null? this.player.shirtNumber="N/A" : this.player.shirtNumber=data['shirtNumber'];
         this.player.dateOfBirth=data['dateOfBirth'];
         this.playerService.getPlayerPicture(this.player.name.replace(" ","%20")).subscribe( data => {
-          console.log(data);
-          console.log(data['query']['pages']);
           let firstProp;
           for(var key in data['query']['pages']) {
           if(data['query']['pages'].hasOwnProperty(key)) {
@@ -45,15 +43,11 @@ export class PlayerdetailsComponent implements OnInit {
             break;
           }
           }
-          console.log("++++"+firstProp);
-          console.log(firstProp['thumbnail']['source']);
           this.player.playerUrl=firstProp['thumbnail']['source'];
           this.player.playerDetails=firstProp['extract'];
         });
 
         this.playerService.getPlayerDescription(this.player.name.replace(" ","%20")).subscribe( data => {
-          console.log("+++++++"+data);
-          console.log(data['query']['pages']);
           let firstProp;
           for(var key in data['query']['pages']) {
           if(data['query']['pages'].hasOwnProperty(key)) {
@@ -63,12 +57,7 @@ export class PlayerdetailsComponent implements OnInit {
           }
 
         this.player.playerDetails=firstProp['extract'];
-        console.log(firstProp['extract']);
         });  
-
-        console.log(this.player.playerUrl);
-        console.log(data['shirtNumber']);
-        console.log(data['dateOfBirth']);
 
   },
   error=> console.log(error)

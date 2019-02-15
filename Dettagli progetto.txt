@@ -1,0 +1,6 @@
+Progetto di fine Fincons Accademy realizzato da Giovanni Puccariello e Sacco domenico
+
+Note:
+
+Abbiamo deciso, per fornite delle informazioni più complete, di fornire foto e dettagli dei giocatori, laddove disponibili, attraverso
+l'API di wikipedia.

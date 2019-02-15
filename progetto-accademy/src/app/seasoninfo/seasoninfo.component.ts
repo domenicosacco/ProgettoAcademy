@@ -19,64 +19,25 @@ export class SeasoninfoComponent implements OnInit {
 
   season: SeasonInfo;
   ngOnInit() {
-    //SafeDelay.delay(500);
-    
+    SafeDelay.delay();
     this.getSeasonDetails();
   }
 
   getParamValueQueryString() {
     const url = window.location.href;
     let paramValue=url.substring(url.indexOf("daystable/")+10);
-    
-    console.log(paramValue);
     return paramValue;
   }
   
   getSeasonDetails() : void {
-    
+
     this.champ= this.getParamValueQueryString();
-
-    console.log("link to d: " + this.champ);
-
+    console.log(this.champ);
+    if(this.champ.includes("/")) {this.champ="2019";}
     this.seasonService.getSeason(this.champ).subscribe(
       data => {
 
-        this.season=new SeasonInfo();
-        console.log("----333333" + data['season']);
-
-       
-        this.season.startDate=data['season']['startDate'];
-        this.season.endDate=data['season']['endDate'];
-        this.season.id=data['season']['id'];
-        this.season.winner=data['season']['winner'];
-        this.season.currentMatchday=data['season']['currentMatchday'];
-        this.season.name=data['competition']['name'];
-
-        this.season.classification=[];
-
-        console.log("----" + data['standings']['0']['table']);
-
-        for (let seasonTeam of data['standings']['0']['table']) {
-          let posInfo : seasonPosition=new seasonPosition();
-
-          console.log("----" + seasonTeam['position']);
-          posInfo.draw=seasonTeam['draw'];
-          posInfo.goalDifference=seasonTeam['goalDifference'];
-          posInfo.goalsAgainst=seasonTeam['goalsAgainst'];
-          posInfo.goalsFor=seasonTeam['goalsFor'];
-          posInfo.lost=seasonTeam['lost'];
-          posInfo.playedGames=seasonTeam['playedGames'];
-          posInfo.points=seasonTeam['points'];
-          posInfo.position=seasonTeam['position'];
-          posInfo.teamCrestUrl=seasonTeam['team']['crestUrl'];
-          posInfo.teamName=seasonTeam['team']['name'];
-          posInfo.won=seasonTeam['won'];
-          posInfo.teamID=seasonTeam['team']['id'];
-
-
-
-          this.season.classification.push(posInfo);
-        }
+        this.season=SeasonInfo.parseJson(data);
 
   },
   error=> console.log(error)

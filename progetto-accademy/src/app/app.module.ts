@@ -16,7 +16,6 @@ import { MatchtableComponent } from './matchtable/matchtable.component';
 import { TeamtableComponent } from './teamtable/teamtable.component';
 import { PlayerdetailsComponent } from './playerdetails/playerdetails.component';
 import { TeamdetailsComponent } from './teamdetails/teamdetails.component';
-import { MatchdetailComponent } from './matchdetail/matchdetail.component';
 import { SeasoninfoComponent } from './seasoninfo/seasoninfo.component';
 
 @NgModule({
@@ -34,7 +33,6 @@ import { SeasoninfoComponent } from './seasoninfo/seasoninfo.component';
     TeamtableComponent,
     PlayerdetailsComponent,
     TeamdetailsComponent,
-    MatchdetailComponent,
     SeasoninfoComponent
   ],
   imports: [

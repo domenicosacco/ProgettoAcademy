@@ -38,38 +38,7 @@ export class TeamdetailsComponent implements OnInit {
     
     this.teamService.getTeamDetails(id).subscribe(
       data => {
-
-        this.tm=new Team();
-
-        
-        this.tm.address=data['address'];
-        this.tm.clubColor=data['clubColors'];
-        this.tm.crustUrl=String(data['crestUrl']);
-        console.log(String(data['crestUrl']));
-        this.tm.area=data['area']['name'];
-        this.tm.mail=data['email']
-        this.tm.foundedYear=data['founded'];
-        this.tm.idTeam=data['id'];
-        this.tm.name=data['name'];
-        this.tm.phone=data['phone'];
-        this.tm.shortName=data['shortName'];
-        this.tm.tla=data['tla'];
-        this.tm.venue=data['venue'];
-        this.tm.webSite=data['website'];
-        this.tm.players=[];
-
-        for(let player in data['squad']) {
-
-          let playerToPut = new Player();
-          playerToPut.id=data['squad'][player]['id'];
-          playerToPut.name=data['squad'][player]['name'];
-          playerToPut.position=data['squad'][player]['position'];
-          playerToPut.shirtNumber=data['squad'][player]['shirtNumber'];
-          playerToPut.countryOfBirth=data['squad'][player]['countryOfBirth'];
-          console.log("putting player with id " + data['squad'][player]['id']);
-          this.tm.players.push(playerToPut);
-        }
-
+        this.tm=Team.parseJson(data);
   },
   error=> console.log(error)
     )}
@@ -80,28 +49,7 @@ export class TeamdetailsComponent implements OnInit {
       this.teamService.getTeamMatches(id).subscribe(
         data => {
   
-          this.matches= [];
-  
-          console.log("----------------" + data['matches'].match);
-
-          for(let match in data['matches']) {
-            this.mtch =new Match();
-            this.mtch.id = data['matches'][match]['id'];
-            console.log("----------------" + data['matches'][match]['id']);
-            this.mtch.homeTeamName=data['matches'][match]['homeTeam']['name'];
-            this.mtch.awayTeamName=data['matches'][match]['awayTeam']['name'];
-            this.mtch.homeTeamID=data['matches'][match]['homeTeam']['id'];
-            this.mtch.awayTeamID=data['matches'][match]['awayTeam']['id'];
-            this.mtch.homeTeamScore=data['matches'][match]['score']['fullTime']['homeTeam'];
-            this.mtch.awayTeamScore=data['matches'][match]['score']['fullTime']['awayTeam'];
-            this.mtch.utcDate=data['matches'][match]['utcDate'];
-            this.mtch.status=data['matches'][match]['status'];
-            this.mtch.stage=data['matches'][match]['stage'];
-            this.mtch.lastUpdated=data['matches'][match]['lastUpdated'];
-            this.mtch.matchDay=data['matches'][match]['matchday'];
-            this.matches.push(this.mtch);
-
-          }
+          this.matches=Match.parseJsonMatches(data);
 
           this.mtch=new Match();
 

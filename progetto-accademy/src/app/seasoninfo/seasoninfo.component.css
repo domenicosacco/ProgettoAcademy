@@ -1,5 +1,8 @@
-.seasoninfo tr{
+.seasoninfo td{
     border: 1px solid black;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .seasoninfo a{
@@ -7,5 +10,21 @@
     color:black;
 }
 
+.seasoninfo th{
+    text-align: center;
+}
+
 .seasoninfo tr:nth-child(even) {background: #CCC}
 .seasoninfo tr:nth-child(odd) {background: #FFF}
+
+.seasonTab {
+    position: fixed;
+    top:40px;
+    margin-left:40px;
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    margin-left:40px;
+}
