@@ -1,5 +1,5 @@
 <div>
-  <h3> Giornate - {{competitionName}} </h3>
+  <h3 *ngIf="competitionName"> Giornate - {{competitionName}} </h3>
 <table class="championshipMaster">
   <tr *ngFor="let day of sortedDays">
       <td ><a class="mx-2" routerLink="/daystable/daydetail/{{champ}}/{{day.dayOfMatch}}">

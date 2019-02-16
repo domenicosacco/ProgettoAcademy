@@ -2,5 +2,16 @@ Progetto di fine Fincons Accademy realizzato da Giovanni Puccariello e Sacco dom
 
 Note:
 
-Abbiamo deciso, per fornite delle informazioni più complete, di fornire foto e dettagli dei giocatori, laddove disponibili, attraverso
-l'API di wikipedia.
+Le entità impiegate per modellare il progetto sono 5:
+
+-Classifica (SeasonInfo)
+-Posizione (SeasonPosition)
+-Giornata (DailyMatch)
+-Partita (Match)
+-Squadra (Team)
+-Giocatore (Player)
+
+A cui si aggiunge una classe chiamata SafeDelay, che impedisce di richiedere ininterrottamente informazioni a partire da un link, imponendo un tempo di attesa pari a 500 millisecondi.
+
+Abbiamo deciso, per fornite delle informazioni più complete, di mostrare foto e dettagli dei giocatori, laddove disponibili, attraverso
+l'API di wikipedia, richiamata attraverso degli appositi servizi appartenenti alla classe PlayerService. Questa sceltsa è dovuta principalmente al mostrare l'efficacia di un'applicazione web basata sui servizi, la quale può combinare informazioni provenienti da fonti differenti.

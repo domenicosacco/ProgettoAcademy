@@ -1,7 +1,7 @@
-<div>
+<div class=teamDet>
     <h3> Dettagli Team </h3>
 <div *ngIf="tm">
-    <img src={{tm.crustUrl}} alt="Imagine team non disponibile" height="60" width="60">
+    <img *ngIf="tm.crustUrl!='null'" src={{tm.crustUrl}} alt="Imagine team non disponibile" height="100" width="100">
     <br>
     Id Squadra: {{tm.idTeam}}
     <br>
