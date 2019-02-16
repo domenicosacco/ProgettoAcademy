@@ -12,13 +12,13 @@
 
 .seasoninfo th{
     text-align: center;
+    align-self: center;
 }
 
 .seasoninfo tr:nth-child(even) {background: #CCC}
 .seasoninfo tr:nth-child(odd) {background: #FFF}
 
 .seasonTab {
-    position: fixed;
     top:40px;
     margin-left:40px;
     text-align: center;
