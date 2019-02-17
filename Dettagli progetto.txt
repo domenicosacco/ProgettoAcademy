@@ -5,7 +5,7 @@ Note:
 Le entità impiegate per modellare il progetto sono 5:
 
 -Classifica (SeasonInfo)
--Posizione (SeasonPosition)
+-Posizione nella classifica (SeasonPosition)
 -Giornata (DailyMatch)
 -Partita (Match)
 -Squadra (Team)
